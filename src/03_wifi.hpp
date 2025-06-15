@@ -67,7 +67,7 @@ WiFiEventHandler wifiDisconnectHandler  ;   // Event handler for wifi disconnect
   #endif
 
   const char* esp_ip = "192.168.1.213";
-  const IPAddress hostIP(192, 168, 1, 133);   // Had coded Node-red server IP    WiFi.mode(WIFI_STA);
+  const IPAddress hostIP(192, 168, 1, 142);   // Had coded Node-red server IP    WiFi.mode(WIFI_STA);
 #endif
 
 #if defined (WIFI_MANAGER)

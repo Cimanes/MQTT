@@ -38,7 +38,7 @@
         "x": 174,
         "y": 19,
         "w": 642,
-        "h": 382
+        "h": 362
     },
     {
         "id": "21a58cbb662a2d77",
@@ -89,7 +89,7 @@
             "80c9d727dadacc4b"
         ],
         "x": 14,
-        "y": 419,
+        "y": 399,
         "w": 1052,
         "h": 602
     },
@@ -119,16 +119,13 @@
             "4e3fedf94445d8f9",
             "5680f40b86eb811e",
             "2e17c5f13b3ab096",
-            "10e898ec405b580b",
-            "a2e851899c0ee76d",
             "257486427dccd228",
-            "10be41b9b5e96abd",
-            "3deaed82819befab"
+            "10be41b9b5e96abd"
         ],
         "x": 154,
-        "y": 1039,
+        "y": 1019,
         "w": 742,
-        "h": 482
+        "h": 442
     },
     {
         "id": "e6c1fb581dd2f563",
@@ -136,7 +133,7 @@
         "z": "4626f4eca8ae462b",
         "g": "21a58cbb662a2d77",
         "x": 620,
-        "y": 700,
+        "y": 680,
         "wires": [
             [
                 "b18baec54d569ee2",
@@ -203,7 +200,7 @@
         "className": "col1",
         "interpolation": "linear",
         "x": 770,
-        "y": 900,
+        "y": 880,
         "wires": [
             [
                 "baf99f2287f0dbb0"
@@ -268,7 +265,7 @@
         "className": "",
         "interpolation": "linear",
         "x": 970,
-        "y": 600,
+        "y": 580,
         "wires": [
             []
         ]
@@ -331,7 +328,7 @@
         "className": "col1",
         "interpolation": "linear",
         "x": 780,
-        "y": 780,
+        "y": 760,
         "wires": [
             [
                 "4083458ef90c25ae"
@@ -353,7 +350,7 @@
         "finalize": "",
         "libs": [],
         "x": 770,
-        "y": 660,
+        "y": 640,
         "wires": [
             [
                 "d2758600007a22ac"
@@ -377,7 +374,7 @@
         "org": "Cimanes",
         "bucket": "Pi01",
         "x": 970,
-        "y": 660,
+        "y": 640,
         "wires": []
     },
     {
@@ -397,7 +394,7 @@
         "org": "Cimanes",
         "bucket": "Pi01",
         "x": 970,
-        "y": 740,
+        "y": 720,
         "wires": []
     },
     {
@@ -415,7 +412,7 @@
         "finalize": "",
         "libs": [],
         "x": 780,
-        "y": 860,
+        "y": 840,
         "wires": [
             [
                 "cce5b66e0055a7e1"
@@ -439,7 +436,7 @@
         "org": "Cimanes",
         "bucket": "Pi01",
         "x": 980,
-        "y": 860,
+        "y": 840,
         "wires": []
     },
     {
@@ -469,7 +466,7 @@
         "iconInnerPosition": "inside",
         "spinner": "default",
         "x": 490,
-        "y": 500,
+        "y": 480,
         "wires": [
             [
                 "8c41d5de709a353d"
@@ -484,7 +481,7 @@
         "name": "Description",
         "info": " ## Description\n This group performs two main tasks: \n - Process and display BME readings.\n - Thermostat control.\n ### User inputs:\n    - Thermostat deadband.\n    - Thermostat control.\n    - BME interval.\n    - Trigger BME reading.\n    - Switch bolier on/off.\n    - Local elevation for Sea Level Pressure.\n \n ## Websocket msg received:\n 1. ### Receive BME readings ESP Feedback group.\n 2. ### Process and distribute message.\n    - BME Readings --> assign topic and apply scale.\n    - BME State and \"last timer\" --> send to ESP Feedbak group.\n 4. ### Display BME Readings.\n    - BME current values --> gauge.\n    - BME historic data --> chart.\n\n## Thermostat control \n- Create context-scope variables for temperature, deadband and setpoint.\n- Define Heater output.",
         "x": 100,
-        "y": 460,
+        "y": 440,
         "wires": []
     },
     {
@@ -515,7 +512,7 @@
         "officon": "",
         "offcolor": "",
         "x": 620,
-        "y": 360,
+        "y": 340,
         "wires": [
             [
                 "8e9c8cbab5eed45f"
@@ -550,7 +547,7 @@
         "officon": "",
         "offcolor": "",
         "x": 490,
-        "y": 540,
+        "y": 520,
         "wires": [
             [
                 "8c41d5de709a353d"
@@ -587,7 +584,7 @@
         "payload": "900",
         "payloadType": "num",
         "x": 270,
-        "y": 500,
+        "y": 480,
         "wires": [
             [
                 "79c47b6764732b12"
@@ -622,7 +619,7 @@
         "officon": "",
         "offcolor": "",
         "x": 610,
-        "y": 300,
+        "y": 280,
         "wires": [
             [
                 "8e9c8cbab5eed45f"
@@ -644,7 +641,7 @@
         "finalize": "",
         "libs": [],
         "x": 770,
-        "y": 740,
+        "y": 720,
         "wires": [
             [
                 "4c21656d105d9a41"
@@ -665,7 +662,7 @@
         "finalize": "",
         "libs": [],
         "x": 480,
-        "y": 820,
+        "y": 800,
         "wires": [
             [
                 "e6c1fb581dd2f563"
@@ -717,7 +714,7 @@
         "iconInnerPosition": "inside",
         "spinner": "default",
         "x": 280,
-        "y": 820,
+        "y": 800,
         "wires": [
             [
                 "ddd8aacba84f2c47"
@@ -743,7 +740,7 @@
         "payload": "529",
         "payloadType": "num",
         "x": 130,
-        "y": 820,
+        "y": 800,
         "wires": [
             [
                 "268cd292df4a3b56"
@@ -770,7 +767,7 @@
         "wrapText": false,
         "className": "",
         "x": 790,
-        "y": 820,
+        "y": 800,
         "wires": []
     },
     {
@@ -781,7 +778,7 @@
         "group": "ddb6dd5038edb54e",
         "name": "esp/espIP",
         "label": "get ESP IP",
-        "order": 3,
+        "order": 2,
         "width": 3,
         "height": 0,
         "emulateClick": true,
@@ -806,7 +803,7 @@
         "pointerupPayload": "",
         "pointerupPayloadType": "str",
         "x": 620,
-        "y": 100,
+        "y": 120,
         "wires": [
             [
                 "8e9c8cbab5eed45f"
@@ -821,7 +818,7 @@
         "group": "ddb6dd5038edb54e",
         "name": "esp/wifi",
         "label": "Reset Wifi",
-        "order": 4,
+        "order": 3,
         "width": 3,
         "height": 0,
         "emulateClick": false,
@@ -846,7 +843,7 @@
         "pointerupPayload": "",
         "pointerupPayloadType": "str",
         "x": 620,
-        "y": 140,
+        "y": 160,
         "wires": [
             [
                 "8e9c8cbab5eed45f"
@@ -868,7 +865,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 770,
-        "y": 1440,
+        "y": 1420,
         "wires": []
     },
     {
@@ -901,7 +898,7 @@
         "showBorder": false,
         "showGlow": false,
         "x": 810,
-        "y": 1240,
+        "y": 1220,
         "wires": []
     },
     {
@@ -934,7 +931,7 @@
         "showBorder": false,
         "showGlow": false,
         "x": 810,
-        "y": 1320,
+        "y": 1300,
         "wires": []
     },
     {
@@ -967,7 +964,7 @@
         "showBorder": false,
         "showGlow": false,
         "x": 800,
-        "y": 1280,
+        "y": 1260,
         "wires": []
     },
     {
@@ -1000,7 +997,7 @@
         "showBorder": false,
         "showGlow": false,
         "x": 800,
-        "y": 1360,
+        "y": 1340,
         "wires": []
     },
     {
@@ -1023,7 +1020,7 @@
         "wrapText": false,
         "className": "",
         "x": 790,
-        "y": 1200,
+        "y": 1180,
         "wires": []
     },
     {
@@ -1032,7 +1029,7 @@
         "z": "4626f4eca8ae462b",
         "g": "752e8cf861cf994f",
         "group": "ddb6dd5038edb54e",
-        "order": 2,
+        "order": 1,
         "width": 3,
         "height": 0,
         "name": "ESP (client) IP",
@@ -1046,7 +1043,7 @@
         "wrapText": false,
         "className": "",
         "x": 790,
-        "y": 1400,
+        "y": 1380,
         "wires": []
     },
     {
@@ -1070,7 +1067,7 @@
         "to": "",
         "reg": false,
         "x": 610,
-        "y": 1160,
+        "y": 1140,
         "wires": [
             [
                 "12022de2a2018bda"
@@ -1097,7 +1094,7 @@
         "className": "",
         "name": "Wifi Reset",
         "x": 800,
-        "y": 1160,
+        "y": 1140,
         "wires": [
             []
         ]
@@ -1121,7 +1118,7 @@
         "payload": "0",
         "payloadType": "str",
         "x": 270,
-        "y": 540,
+        "y": 520,
         "wires": [
             [
                 "0fc1aea9f3405373"
@@ -1147,7 +1144,7 @@
         "payload": "1",
         "payloadType": "str",
         "x": 310,
-        "y": 300,
+        "y": 280,
         "wires": [
             [
                 "9021d18f82f4ac42"
@@ -1173,7 +1170,7 @@
         "payload": "1",
         "payloadType": "str",
         "x": 300,
-        "y": 360,
+        "y": 340,
         "wires": [
             [
                 "b8c346de5967093e"
@@ -1213,7 +1210,7 @@
         "pointerupPayload": "",
         "pointerupPayloadType": "str",
         "x": 500,
-        "y": 460,
+        "y": 440,
         "wires": [
             [
                 "8c41d5de709a353d"
@@ -1260,7 +1257,7 @@
         "styleGlow": false,
         "className": "",
         "x": 970,
-        "y": 780,
+        "y": 760,
         "wires": []
     },
     {
@@ -1303,7 +1300,7 @@
         "styleGlow": false,
         "className": "",
         "x": 970,
-        "y": 900,
+        "y": 880,
         "wires": []
     },
     {
@@ -1346,7 +1343,7 @@
         "styleGlow": false,
         "className": "",
         "x": 770,
-        "y": 700,
+        "y": 680,
         "wires": []
     },
     {
@@ -1406,7 +1403,7 @@
         "repair": false,
         "outputs": 9,
         "x": 330,
-        "y": 1260,
+        "y": 1240,
         "wires": [
             [
                 "2e17c5f13b3ab096"
@@ -1451,7 +1448,7 @@
         "rh": 0,
         "inputs": 0,
         "x": 70,
-        "y": 1260,
+        "y": 1240,
         "wires": [
             [
                 "44e80559e2fe8234"
@@ -1466,7 +1463,7 @@
         "name": "Description",
         "info": " 1. ### Process and display feedback from ESP:\n    - GPIO # and BME state\n    - BME Interval\n    - Debug\n    - ESP IP\n",
         "x": 240,
-        "y": 1080,
+        "y": 1060,
         "wires": []
     },
     {
@@ -1489,7 +1486,7 @@
         "wrapText": false,
         "className": "",
         "x": 770,
-        "y": 940,
+        "y": 920,
         "wires": []
     },
     {
@@ -1525,7 +1522,7 @@
         "pointerupPayload": "",
         "pointerupPayloadType": "str",
         "x": 610,
-        "y": 180,
+        "y": 200,
         "wires": [
             [
                 "8e9c8cbab5eed45f"
@@ -1543,7 +1540,7 @@
             "4e3fedf94445d8f9"
         ],
         "x": 575,
-        "y": 980,
+        "y": 960,
         "wires": []
     },
     {
@@ -1556,7 +1553,7 @@
             "b9f2e3d1b77e8dee"
         ],
         "x": 685,
-        "y": 1120,
+        "y": 1100,
         "wires": [
             [
                 "5680f40b86eb811e"
@@ -1598,7 +1595,7 @@
         "showBorder": false,
         "showGlow": false,
         "x": 800,
-        "y": 1120,
+        "y": 1100,
         "wires": []
     },
     {
@@ -1614,7 +1611,7 @@
         "onceDelay": "5",
         "topic": "",
         "x": 310,
-        "y": 100,
+        "y": 120,
         "wires": [
             [
                 "84817230c046ae3e"
@@ -1649,7 +1646,7 @@
             "1d8916d978d6f75f"
         ],
         "x": 430,
-        "y": 180,
+        "y": 200,
         "wires": [
             [
                 "bfbd6f3e61b8b3c4",
@@ -1690,7 +1687,7 @@
         "pointerupPayload": "",
         "pointerupPayloadType": "str",
         "x": 620,
-        "y": 220,
+        "y": 240,
         "wires": [
             [
                 "8e9c8cbab5eed45f"
@@ -1708,7 +1705,7 @@
             "5937b944831de320"
         ],
         "x": 395,
-        "y": 1120,
+        "y": 1100,
         "wires": []
     },
     {
@@ -1721,55 +1718,12 @@
             "2e17c5f13b3ab096"
         ],
         "x": 325,
-        "y": 860,
+        "y": 840,
         "wires": [
             [
                 "ddd8aacba84f2c47"
             ]
         ]
-    },
-    {
-        "id": "10e898ec405b580b",
-        "type": "inject",
-        "z": "4626f4eca8ae462b",
-        "g": "752e8cf861cf994f",
-        "name": "Trigger on start",
-        "props": [],
-        "repeat": "",
-        "crontab": "",
-        "once": true,
-        "onceDelay": "0.5",
-        "topic": "",
-        "x": 280,
-        "y": 1480,
-        "wires": [
-            [
-                "3deaed82819befab"
-            ]
-        ]
-    },
-    {
-        "id": "a2e851899c0ee76d",
-        "type": "ui-text",
-        "z": "4626f4eca8ae462b",
-        "g": "752e8cf861cf994f",
-        "group": "ddb6dd5038edb54e",
-        "order": 1,
-        "width": 3,
-        "height": 0,
-        "name": "Host IP",
-        "label": "Node Red (host) IP:",
-        "format": "{{msg.payload}}",
-        "layout": "row-left",
-        "style": false,
-        "font": "",
-        "fontSize": 16,
-        "color": "#717171",
-        "wrapText": false,
-        "className": "",
-        "x": 810,
-        "y": 1480,
-        "wires": []
     },
     {
         "id": "e1fbb03c37a844c4",
@@ -1790,7 +1744,7 @@
         "payload": "1",
         "payloadType": "num",
         "x": 440,
-        "y": 980,
+        "y": 960,
         "wires": [
             [
                 "b9f2e3d1b77e8dee"
@@ -1805,7 +1759,7 @@
         "group": "ddb6dd5038edb54e",
         "name": "Unlock Wifi Reset",
         "label": "Unlock",
-        "order": 5,
+        "order": 4,
         "width": 3,
         "height": 0,
         "passthru": false,
@@ -1824,7 +1778,7 @@
             "f59cf411d22a7ecd"
         ],
         "x": 450,
-        "y": 140,
+        "y": 160,
         "wires": [
             [
                 "f59cf411d22a7ecd"
@@ -1851,7 +1805,7 @@
         "templateScope": "widget:page",
         "className": "",
         "x": 280,
-        "y": 160,
+        "y": 180,
         "wires": [
             [
                 "4dfa046d4f270346",
@@ -1878,7 +1832,7 @@
         "payload": "5",
         "payloadType": "num",
         "x": 280,
-        "y": 640,
+        "y": 620,
         "wires": [
             [
                 "3a49dc07585c056f"
@@ -1904,7 +1858,7 @@
         "payload": "0.2",
         "payloadType": "num",
         "x": 280,
-        "y": 600,
+        "y": 580,
         "wires": [
             [
                 "2ca24d054e1a9b71"
@@ -1932,13 +1886,13 @@
         "sendOnBlur": false,
         "sendOnEnter": true,
         "className": "",
-        "clearable": true,
+        "clearable": false,
         "icon": "",
         "iconPosition": "left",
         "iconInnerPosition": "inside",
         "spinner": "stacked",
         "x": 490,
-        "y": 600,
+        "y": 580,
         "wires": [
             [
                 "9699407832ee2f81"
@@ -1963,8 +1917,8 @@
         "topicType": "str",
         "thumbLabel": "true",
         "showTicks": "true",
-        "min": "35",
-        "max": "5",
+        "min": "5",
+        "max": "35",
         "step": "0.5",
         "className": "",
         "iconPrepend": "minus",
@@ -1974,7 +1928,7 @@
         "colorThumb": "",
         "showTextField": true,
         "x": 490,
-        "y": 640,
+        "y": 620,
         "wires": [
             [
                 "9699407832ee2f81"
@@ -1987,7 +1941,7 @@
         "z": "4626f4eca8ae462b",
         "g": "21a58cbb662a2d77",
         "name": "Thermostat",
-        "func": "// The msg received can be ot the types:\n//   {\"payload\": 20, \"topic\": \"thermostat\"}\n//   {\"payload\": 0.3, \"topic\": \"deadband\"}\n//   {\"payload\": 21.4, \"topic\": \"temp\"}\n// Topic = name of the context-scoped variable.\n// Payload = new value for that variable.\n\n// Update the corresponding context variable\n// (\"deadband\" / \"temp\" / \"thermostat\")\ncontext.set(msg.topic, msg.payload);\n\n// Calculate the \"heater\" state.\nconst T = context.get(\"temp\"),\n    DB = context.get(\"deadband\"),\n    Setpoint = context.get(\"thermostat\"),\n    Heater = Setpoint > T + DB ? 1 : 0,\n    HeaterChart = 4 * (Heater + .1);   // -> 0.4 (off) or 4.4 (on) in chart\n\nnode.status({\n    fill: Heater == 1 ? \"red\" : \"green\",\n    shape: \"ring\",\n    text: Heater == 1 ? \"Heater ON\" : \"Heater OFF\"\n});\n\n// \"heater\" changed? → update context and send to websocket (output 1)\nif (context.get(\"heater\") !== Heater) {\n    context.set(\"heater\", Heater);\n    return [\n        { topic: \"gpio/heater\", payload: Heater },\n        { text: \"Heater \" + (Heater === 1? \"ON\": \"OFF\") },\n        { topic: \"Heater\", payload: HeaterChart },\n        { topic: \"Setpoint\", payload: Setpoint },\n        { topic: \"Temp\", payload: T, }\n    ]\n};\n\n// Only deadband changed? → no output.\nif (msg.topic == \"deadband\") return;\n\n// No change in heater state → only send remaining outputs\nreturn [\n    null,\n    null,\n    { topic: \"Heater\", payload: HeaterChart },\n    { topic: \"Setpoint\", payload: Setpoint },\n    { topic: \"Temp\", payload: T, }\n];",
+        "func": "// The msg received can be ot the types:\n//   {\"payload\": 20, \"topic\": \"thermostat\"}\n//   {\"payload\": 0.3, \"topic\": \"deadband\"}\n//   {\"payload\": 21.4, \"topic\": \"temp\"}\n// Topic = name of the context-scoped variable.\n// Payload = new value for that variable.\n\n// Update the corresponding context variable\n// (\"deadband\" / \"temp\" / \"thermostat\")\ncontext.set(msg.topic, msg.payload);\n\n// Calculate the \"heater\" state.\nconst T = context.get(\"temp\"),\n    DB = context.get(\"deadband\"),\n    Setpoint = context.get(\"thermostat\"),\n    Heater = Setpoint > T + DB ? 1 : 0,\n    HeaterChart = 4 * (Heater + .1);   // -> 0.4 (off) or 4.4 (on) in chart\n\nnode.status({\n    fill: Heater == 1 ? \"green\" : \"red\",\n    shape: \"ring\",\n    text: Heater == 1 ? \"Heater ON\" : \"Heater OFF\"\n});\n\n// \"heater\" changed? → update context and send to websocket (output 1)\nif (context.get(\"heater\") !== Heater) {\n    context.set(\"heater\", Heater);\n    return [\n        { topic: \"gpio/heater\", payload: Heater },\n        { text: \"Heater \" + (Heater === 1? \"ON\": \"OFF\") },\n        { topic: \"Heater\", payload: HeaterChart },\n        { topic: \"Setpoint\", payload: Setpoint },\n        { topic: \"Temp\", payload: T, }\n    ]\n};\n\n// Only deadband changed? → no output.\nif (msg.topic == \"deadband\") return;\n\n// No change in heater state → only send remaining outputs\nreturn [\n    null,\n    null,\n    { topic: \"Heater\", payload: HeaterChart },\n    { topic: \"Setpoint\", payload: Setpoint },\n    { topic: \"Temp\", payload: T, }\n];",
         "outputs": 5,
         "timeout": 0,
         "noerr": 0,
@@ -1995,7 +1949,7 @@
         "finalize": "",
         "libs": [],
         "x": 750,
-        "y": 580,
+        "y": 560,
         "wires": [
             [
                 "8c41d5de709a353d"
@@ -2047,7 +2001,7 @@
         "pointerupPayload": "",
         "pointerupPayloadType": "str",
         "x": 620,
-        "y": 260,
+        "y": 80,
         "wires": [
             [
                 "8e9c8cbab5eed45f"
@@ -2074,7 +2028,7 @@
         "wrapText": false,
         "className": "",
         "x": 800,
-        "y": 1080,
+        "y": 1060,
         "wires": []
     },
     {
@@ -2088,7 +2042,7 @@
             "10be41b9b5e96abd"
         ],
         "x": 645,
-        "y": 960,
+        "y": 940,
         "wires": []
     },
     {
@@ -2101,7 +2055,7 @@
             "2f0b9aa94e488626"
         ],
         "x": 695,
-        "y": 1080,
+        "y": 1060,
         "wires": [
             [
                 "257486427dccd228"
@@ -2119,7 +2073,7 @@
             "ed3179fae9c21c7b"
         ],
         "x": 865,
-        "y": 500,
+        "y": 480,
         "wires": []
     },
     {
@@ -2137,7 +2091,7 @@
         "expiry": "",
         "broker": "9f9e276987b2fb1f",
         "x": 1020,
-        "y": 220,
+        "y": 240,
         "wires": []
     },
     {
@@ -2150,7 +2104,7 @@
             "8e9c8cbab5eed45f"
         ],
         "x": 895,
-        "y": 220,
+        "y": 240,
         "wires": [
             [
                 "a7c3a74e711d2061"
@@ -2168,34 +2122,8 @@
             "ed3179fae9c21c7b"
         ],
         "x": 775,
-        "y": 220,
+        "y": 240,
         "wires": []
-    },
-    {
-        "id": "3deaed82819befab",
-        "type": "function",
-        "z": "4626f4eca8ae462b",
-        "g": "752e8cf861cf994f",
-        "name": "Get Local IP",
-        "func": "// Get all the network interfaces on the system:\nconst interfaces = os.networkInterfaces();\nlet localIP = '';\n\nconst preferredInterfaces = ['Wi-Fi', 'wlan0', 'eth0', 'Ethernet'];\n\nfor (const name of preferredInterfaces.concat(Object.keys(interfaces))) {\n    const ifaceList = interfaces[name];\n    if (!ifaceList) continue;\n    \n    for (const iface of ifaceList) {\n        if (iface.family === 'IPv4' && !iface.internal) {\n            localIP = iface.address;\n            break;\n        }\n    }\n    if (localIP) break;\n}\n\nmsg.topic = \"localIP\";\nmsg.payload = localIP || \"Not found\";\nreturn msg;\n",
-        "outputs": 1,
-        "timeout": "",
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [
-            {
-                "var": "os",
-                "module": "os"
-            }
-        ],
-        "x": 450,
-        "y": 1480,
-        "wires": [
-            [
-                "a2e851899c0ee76d"
-            ]
-        ]
     },
     {
         "id": "80c9d727dadacc4b",
@@ -2213,7 +2141,7 @@
         "inputtypemessage": "msg",
         "rejectssl": false,
         "x": 960,
-        "y": 540,
+        "y": 520,
         "wires": [
             []
         ]
@@ -2278,7 +2206,7 @@
     {
         "id": "6d20b9ba6d148641",
         "type": "ui-group",
-        "name": "BME Control",
+        "name": "Control",
         "page": "f244d991d7d0735a",
         "width": 6,
         "height": 1,
@@ -2292,7 +2220,7 @@
     {
         "id": "6802e7f370cd4a31",
         "type": "ui-group",
-        "name": "ESP",
+        "name": "Control",
         "page": "c72da1dec48c5176",
         "width": 3,
         "height": 1,
@@ -2306,7 +2234,7 @@
     {
         "id": "73528bb91092cced",
         "type": "ui-group",
-        "name": "BME Readings",
+        "name": "Readings",
         "page": "f244d991d7d0735a",
         "width": 6,
         "height": 1,
@@ -2425,8 +2353,8 @@
         ],
         "order": 5,
         "className": "",
-        "visible": "true",
-        "disabled": "false"
+        "visible": "false",
+        "disabled": "true"
     },
     {
         "id": "4ff9492c2cbfcba4",
