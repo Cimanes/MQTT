@@ -1,18 +1,16 @@
 // =============================================
 // LIBRARIES
 // =============================================
-#if defined(ESP32)
-  #include "SPIFFS.h"         // OPTIONAL: available for SPIFFS in ESP32 only
-#elif defined(ESP8266)
-  #include <LittleFS.h>       // OPTIONAL: Little file system for ESP8266
-#endif
+#include <LittleFS.h>       // OPTIONAL: Little file system for ESP8266
+
 
 // =============================================
 // VARIABLES
 // =============================================
-FSInfo fs_info;             // FSInfo is a structure (defined in LittleFS library) that holds information about the file system
 const byte paramSize = 25;  // Maximum size for SSID and Password
-  
+// uint16_t totalKB = 0;
+// uint16_t usedKB  = 0;
+
 // =============================================
 // MANAGE FILE SYSTEM
 // =============================================
@@ -20,11 +18,17 @@ void initFS() {
   if (!LittleFS.begin()) {
     if (Debug) Serial.println(F("File Sys mount - FAIL"));
   }
-  // if (!SPIFFS.begin(true)) Serial.println(F("Error mounting File System"));      // particular for SPIFFS in ESP32 only
   else {
     if (Debug) Serial.println(F("File Sys mounted"));
-    LittleFS.info(fs_info); // Populates fs_info structure with info about LittleFS
-    // totalBytes = fs_info.totalBytes/1000;  // Total memory in LittleFS
+    #if defined(ESP8266)
+      FSInfo fs_info;           // FSInfo is a structure (defined in LittleFS library) that holds information about the file system
+      LittleFS.info(fs_info);   // Populates fs_info structure with info about LittleFS
+      // totalKB = fs_info.totalBytes/1024;  // Total memory in LittleFS
+      // usedKB = fs_info.usedBytes/1024;    // Used memory in LittleFS
+    #elif defined (ESP32)
+      // totalKB = LittleFS.totalBytes()/1024;  // Total memory in LittleFS
+      // usedKB = LittleFS.usedBytes()/1024;    // Used memory in LittleFS
+    #endif
   }
 }
 

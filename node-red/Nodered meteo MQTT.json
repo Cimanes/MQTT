@@ -33,11 +33,11 @@
             "4dfa046d4f270346",
             "1833db29df961a87",
             "c5c2cae54d853cbd",
-            "8e9c8cbab5eed45f"
+            "827485e5ac0c3326"
         ],
-        "x": 174,
+        "x": 14,
         "y": 19,
-        "w": 642,
+        "w": 692,
         "h": 362
     },
     {
@@ -85,8 +85,8 @@
             "3a49dc07585c056f",
             "9699407832ee2f81",
             "2f0b9aa94e488626",
-            "8c41d5de709a353d",
-            "80c9d727dadacc4b"
+            "80c9d727dadacc4b",
+            "b0b93dd5e4a78e0a"
         ],
         "x": 14,
         "y": 399,
@@ -122,10 +122,32 @@
             "257486427dccd228",
             "10be41b9b5e96abd"
         ],
-        "x": 154,
+        "x": 134,
         "y": 1019,
-        "w": 742,
+        "w": 772,
         "h": 442
+    },
+    {
+        "id": "594314988bafe566",
+        "type": "group",
+        "z": "4626f4eca8ae462b",
+        "name": "MQTT Broker",
+        "style": {
+            "label": true,
+            "color": "#3f93cf",
+            "fill": "#000000",
+            "stroke": "#3f5787"
+        },
+        "nodes": [
+            "71f56412e0a1bd0b",
+            "94a8707a2c4a4308",
+            "30bcabc71382bd19",
+            "3c5d1057143c730d"
+        ],
+        "x": 734,
+        "y": 19,
+        "w": 492,
+        "h": 162
     },
     {
         "id": "e6c1fb581dd2f563",
@@ -139,6 +161,32 @@
                 "b18baec54d569ee2",
                 "16e2c7310b4459b7",
                 "9699407832ee2f81"
+            ]
+        ]
+    },
+    {
+        "id": "b0b93dd5e4a78e0a",
+        "type": "junction",
+        "z": "4626f4eca8ae462b",
+        "g": "21a58cbb662a2d77",
+        "x": 860,
+        "y": 480,
+        "wires": [
+            [
+                "a7c3a74e711d2061"
+            ]
+        ]
+    },
+    {
+        "id": "827485e5ac0c3326",
+        "type": "junction",
+        "z": "4626f4eca8ae462b",
+        "g": "7b0e3269a6233dda",
+        "x": 680,
+        "y": 240,
+        "wires": [
+            [
+                "a7c3a74e711d2061"
             ]
         ]
     },
@@ -469,7 +517,7 @@
         "y": 480,
         "wires": [
             [
-                "8c41d5de709a353d"
+                "b0b93dd5e4a78e0a"
             ]
         ]
     },
@@ -511,11 +559,11 @@
         "offvalueType": "str",
         "officon": "",
         "offcolor": "",
-        "x": 620,
+        "x": 460,
         "y": 340,
         "wires": [
             [
-                "8e9c8cbab5eed45f"
+                "827485e5ac0c3326"
             ]
         ]
     },
@@ -550,7 +598,7 @@
         "y": 520,
         "wires": [
             [
-                "8c41d5de709a353d"
+                "b0b93dd5e4a78e0a"
             ]
         ]
     },
@@ -561,7 +609,7 @@
         "g": "7b0e3269a6233dda",
         "name": "Description",
         "info": "GPIO Controls:\nSwitches to control ESP built-in LED and debug mode.\nButtons to command reboot, OTA upgrade, Wifi reset and BME Read\nSignals sent via MQTT protocol to ESP device.\nThe topic is: esp/xxx\nThe ESP will use the topic to identify the task.\nSignals are sent to the \"MQTT Send\" group to be broadcasted.",
-        "x": 260,
+        "x": 100,
         "y": 60,
         "wires": []
     },
@@ -618,11 +666,11 @@
         "offvalueType": "str",
         "officon": "",
         "offcolor": "",
-        "x": 610,
+        "x": 450,
         "y": 280,
         "wires": [
             [
-                "8e9c8cbab5eed45f"
+                "827485e5ac0c3326"
             ]
         ]
     },
@@ -654,7 +702,7 @@
         "z": "4626f4eca8ae462b",
         "g": "21a58cbb662a2d77",
         "name": "BME Readings",
-        "func": "let msgHum = null, \n    msgPres = null,\n    msgSLP = null,\n    msgTemp = null,\n    msgErr = null, \n    msgTime = null;\n\n// Update variables with topic in context (elevation):\nif (msg.topic == \"elevation\") { context.set(\"elevation\", msg.payload); }\n\n// Update BME readings (msg.payload is a JSON with one key per variable):\nelse { \n    const obj = msg.payload;\n    msgTemp = { topic: \"temp\", payload: obj.temp / 10 };\n    msgHum = { topic: \"RH-%\", payload: obj.hum / 10 };\n    msgPres = { payload: obj.pres / 10 };\n    msgTime = { payload: new Date().toLocaleString(\"es-ES\") };\n    msgErr = { payload: obj.err };\n\n    context.set(\"temp\", obj.temp / 10);\n    context.set(\"pres\", obj.pres / 10);\n}\n\n// Calculation of Sea Level Pressure:\n// T = Temperature at station(in K — Kelvin)\n// L = Temperature lapse rate ≈ 0.0065 K / m\n// g = Gravitational acceleration ≈ 9.80665 m / s²\n// M = Molar mass of dry air ≈ 0.0289644 kg / mol\n// R = Universal gas constant ≈ 8.31432 N·m / (mol·K)\n// exp = -(g * M)/(R * L)\nlet T = context.get(\"temp\");\nconst P = context.get(\"pres\");\nconst H = context.get(\"elevation\");\nif (T === undefined || P === undefined || H === undefined) {\n    node.warn(\"Missing required inputs. Waiting for all inputs to be available.\");\n    return null; // Don't compute until all data is available\n}\n\nT += 273.15;\nconst L = 0.0065,\n    exp = -5.255;\n\nmsgSLP = { topic: \"Sea Level Press.\", payload: Math.round(P * Math.pow(1- (L * H) / T, exp)) };\n\nreturn [msgTemp, msgSLP, msgPres, msgHum, msgTime, msgErr];",
+        "func": "let msgHum = null, \n    msgPres = null,\n    msgSLP = null,\n    msgTemp = null,\n    msgErr = null, \n    msgTime = null;\n\n// Update variables with topic in context (elevation):\nif (msg.topic == \"elevation\") { context.set(\"elevation\", msg.payload); }\n\n// Update BME readings (msg.payload is a JSON with one key per variable):\nelse {\n    const obj = msg.payload;\n    msgTime = { payload: new Date().toLocaleString(\"es-ES\") };\n    msgErr = { payload: obj.err };\n\n    //Do not update faulty readings\n    if (obj.err !== 0) {\n        return [null, null, null, null, msgTime, msgErr];\n    }\n\n    msgTemp = { topic: \"temp\", payload: obj.temp / 10 };\n    msgHum = { topic: \"RH-%\", payload: obj.hum / 10 };\n    msgPres = { payload: obj.pres / 10 };\n\n    context.set(\"temp\", obj.temp / 10);\n    context.set(\"pres\", obj.pres / 10);\n}\n\n// Calculation of Sea Level Pressure:\n// T = Temperature at station(in K — Kelvin)\n// L = Temperature lapse rate ≈ 0.0065 K / m\n// g = Gravitational acceleration ≈ 9.80665 m / s²\n// M = Molar mass of dry air ≈ 0.0289644 kg / mol\n// R = Universal gas constant ≈ 8.31432 N·m / (mol·K)\n// exp = -(g * M)/(R * L)\nlet T = context.get(\"temp\");\nconst P = context.get(\"pres\");\nconst H = context.get(\"elevation\");\nif (T === undefined || P === undefined || H === undefined) {\n    node.warn(\"Missing required inputs. Waiting for all inputs to be available.\");\n    return null; // Don't compute until all data is available\n}\n\nT += 273.15;\nconst L = 0.0065,\n    exp = -5.255;\n\nmsgSLP = { topic: \"Sea Level Press.\", payload: Math.round(P * Math.pow(1- (L * H) / T, exp)) };\n\nreturn [msgTemp, msgSLP, msgPres, msgHum, msgTime, msgErr];",
         "outputs": 6,
         "timeout": 0,
         "noerr": 0,
@@ -802,11 +850,11 @@
         "enablePointerup": false,
         "pointerupPayload": "",
         "pointerupPayloadType": "str",
-        "x": 620,
+        "x": 460,
         "y": 120,
         "wires": [
             [
-                "8e9c8cbab5eed45f"
+                "827485e5ac0c3326"
             ]
         ]
     },
@@ -842,11 +890,11 @@
         "enablePointerup": false,
         "pointerupPayload": "",
         "pointerupPayloadType": "str",
-        "x": 620,
+        "x": 460,
         "y": 160,
         "wires": [
             [
-                "8e9c8cbab5eed45f"
+                "827485e5ac0c3326"
             ]
         ]
     },
@@ -864,7 +912,7 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 770,
+        "x": 780,
         "y": 1420,
         "wires": []
     },
@@ -897,7 +945,7 @@
         "shape": "square",
         "showBorder": false,
         "showGlow": false,
-        "x": 810,
+        "x": 820,
         "y": 1220,
         "wires": []
     },
@@ -930,7 +978,7 @@
         "shape": "square",
         "showBorder": false,
         "showGlow": false,
-        "x": 810,
+        "x": 820,
         "y": 1300,
         "wires": []
     },
@@ -963,7 +1011,7 @@
         "shape": "square",
         "showBorder": false,
         "showGlow": false,
-        "x": 800,
+        "x": 810,
         "y": 1260,
         "wires": []
     },
@@ -996,7 +1044,7 @@
         "shape": "square",
         "showBorder": false,
         "showGlow": false,
-        "x": 800,
+        "x": 810,
         "y": 1340,
         "wires": []
     },
@@ -1019,7 +1067,7 @@
         "color": "#717171",
         "wrapText": false,
         "className": "",
-        "x": 790,
+        "x": 800,
         "y": 1180,
         "wires": []
     },
@@ -1042,7 +1090,7 @@
         "color": "#717171",
         "wrapText": false,
         "className": "",
-        "x": 790,
+        "x": 800,
         "y": 1380,
         "wires": []
     },
@@ -1066,7 +1114,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 610,
+        "x": 530,
         "y": 1140,
         "wires": [
             [
@@ -1093,7 +1141,7 @@
         "raw": true,
         "className": "",
         "name": "Wifi Reset",
-        "x": 800,
+        "x": 810,
         "y": 1140,
         "wires": [
             []
@@ -1143,7 +1191,7 @@
         "topic": "",
         "payload": "1",
         "payloadType": "str",
-        "x": 310,
+        "x": 150,
         "y": 280,
         "wires": [
             [
@@ -1169,7 +1217,7 @@
         "topic": "",
         "payload": "1",
         "payloadType": "str",
-        "x": 300,
+        "x": 140,
         "y": 340,
         "wires": [
             [
@@ -1213,7 +1261,7 @@
         "y": 440,
         "wires": [
             [
-                "8c41d5de709a353d"
+                "b0b93dd5e4a78e0a"
             ]
         ]
     },
@@ -1241,7 +1289,7 @@
             },
             {
                 "from": "1000",
-                "color": "#08a612"
+                "color": "#008700"
             },
             {
                 "from": "1020",
@@ -1280,11 +1328,11 @@
         "segments": [
             {
                 "from": "0",
-                "color": "#cd3c32"
+                "color": "#b40000"
             },
             {
                 "from": "40",
-                "color": "#08a612"
+                "color": "#008700"
             },
             {
                 "from": "65",
@@ -1327,11 +1375,11 @@
             },
             {
                 "from": "19",
-                "color": "#08a612"
+                "color": "#008700"
             },
             {
                 "from": "26",
-                "color": "#cd3c32"
+                "color": "#b40000"
             }
         ],
         "min": "5",
@@ -1402,8 +1450,8 @@
         "checkall": "true",
         "repair": false,
         "outputs": 9,
-        "x": 330,
-        "y": 1240,
+        "x": 250,
+        "y": 1260,
         "wires": [
             [
                 "2e17c5f13b3ab096"
@@ -1448,7 +1496,7 @@
         "rh": 0,
         "inputs": 0,
         "x": 70,
-        "y": 1240,
+        "y": 1260,
         "wires": [
             [
                 "44e80559e2fe8234"
@@ -1462,7 +1510,7 @@
         "g": "752e8cf861cf994f",
         "name": "Description",
         "info": " 1. ### Process and display feedback from ESP:\n    - GPIO # and BME state\n    - BME Interval\n    - Debug\n    - ESP IP\n",
-        "x": 240,
+        "x": 220,
         "y": 1060,
         "wires": []
     },
@@ -1521,11 +1569,11 @@
         "enablePointerup": false,
         "pointerupPayload": "",
         "pointerupPayloadType": "str",
-        "x": 610,
+        "x": 450,
         "y": 200,
         "wires": [
             [
-                "8e9c8cbab5eed45f"
+                "827485e5ac0c3326"
             ]
         ]
     },
@@ -1552,7 +1600,7 @@
         "links": [
             "b9f2e3d1b77e8dee"
         ],
-        "x": 685,
+        "x": 695,
         "y": 1100,
         "wires": [
             [
@@ -1594,7 +1642,7 @@
         "shape": "square",
         "showBorder": false,
         "showGlow": false,
-        "x": 800,
+        "x": 810,
         "y": 1100,
         "wires": []
     },
@@ -1610,7 +1658,7 @@
         "once": true,
         "onceDelay": "5",
         "topic": "",
-        "x": 310,
+        "x": 150,
         "y": 120,
         "wires": [
             [
@@ -1645,7 +1693,7 @@
             "bfbd6f3e61b8b3c4",
             "1d8916d978d6f75f"
         ],
-        "x": 430,
+        "x": 270,
         "y": 200,
         "wires": [
             [
@@ -1686,11 +1734,11 @@
         "enablePointerup": false,
         "pointerupPayload": "",
         "pointerupPayloadType": "str",
-        "x": 620,
+        "x": 460,
         "y": 240,
         "wires": [
             [
-                "8e9c8cbab5eed45f"
+                "827485e5ac0c3326"
             ]
         ]
     },
@@ -1704,7 +1752,7 @@
         "links": [
             "5937b944831de320"
         ],
-        "x": 395,
+        "x": 315,
         "y": 1100,
         "wires": []
     },
@@ -1777,7 +1825,7 @@
         "controlledWidgets": [
             "f59cf411d22a7ecd"
         ],
-        "x": 450,
+        "x": 290,
         "y": 160,
         "wires": [
             [
@@ -1804,7 +1852,7 @@
         "resendOnRefresh": true,
         "templateScope": "widget:page",
         "className": "",
-        "x": 280,
+        "x": 120,
         "y": 180,
         "wires": [
             [
@@ -1952,7 +2000,7 @@
         "y": 560,
         "wires": [
             [
-                "8c41d5de709a353d"
+                "b0b93dd5e4a78e0a"
             ],
             [
                 "80c9d727dadacc4b"
@@ -2000,11 +2048,11 @@
         "enablePointerup": false,
         "pointerupPayload": "",
         "pointerupPayloadType": "str",
-        "x": 620,
+        "x": 460,
         "y": 80,
         "wires": [
             [
-                "8e9c8cbab5eed45f"
+                "827485e5ac0c3326"
             ]
         ]
     },
@@ -2027,7 +2075,7 @@
         "color": "#717171",
         "wrapText": false,
         "className": "",
-        "x": 800,
+        "x": 810,
         "y": 1060,
         "wires": []
     },
@@ -2054,27 +2102,13 @@
         "links": [
             "2f0b9aa94e488626"
         ],
-        "x": 695,
+        "x": 705,
         "y": 1060,
         "wires": [
             [
                 "257486427dccd228"
             ]
         ]
-    },
-    {
-        "id": "8c41d5de709a353d",
-        "type": "link out",
-        "z": "4626f4eca8ae462b",
-        "g": "21a58cbb662a2d77",
-        "name": "BME msg out",
-        "mode": "link",
-        "links": [
-            "ed3179fae9c21c7b"
-        ],
-        "x": 865,
-        "y": 480,
-        "wires": []
     },
     {
         "id": "a7c3a74e711d2061",
@@ -2090,38 +2124,7 @@
         "correl": "",
         "expiry": "",
         "broker": "9f9e276987b2fb1f",
-        "x": 1020,
-        "y": 240,
-        "wires": []
-    },
-    {
-        "id": "ed3179fae9c21c7b",
-        "type": "link in",
-        "z": "4626f4eca8ae462b",
-        "name": "MQTT Send in",
-        "links": [
-            "8c41d5de709a353d",
-            "8e9c8cbab5eed45f"
-        ],
-        "x": 895,
-        "y": 240,
-        "wires": [
-            [
-                "a7c3a74e711d2061"
-            ]
-        ]
-    },
-    {
-        "id": "8e9c8cbab5eed45f",
-        "type": "link out",
-        "z": "4626f4eca8ae462b",
-        "g": "7b0e3269a6233dda",
-        "name": "ESP msg out",
-        "mode": "link",
-        "links": [
-            "ed3179fae9c21c7b"
-        ],
-        "x": 775,
+        "x": 940,
         "y": 240,
         "wires": []
     },
@@ -2145,6 +2148,81 @@
         "wires": [
             []
         ]
+    },
+    {
+        "id": "71f56412e0a1bd0b",
+        "type": "debug",
+        "z": "4626f4eca8ae462b",
+        "g": "594314988bafe566",
+        "name": "Aedes Events",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1060,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "94a8707a2c4a4308",
+        "type": "aedes broker",
+        "z": "4626f4eca8ae462b",
+        "g": "594314988bafe566",
+        "name": "MQTT Broker 1883",
+        "mqtt_port": "1883",
+        "mqtt_ws_bind": "port",
+        "mqtt_ws_port": "",
+        "mqtt_ws_path": "",
+        "cert": "",
+        "key": "",
+        "certname": "",
+        "keyname": "",
+        "persistence_bind": "memory",
+        "dburl": "",
+        "usetls": false,
+        "x": 850,
+        "y": 120,
+        "wires": [
+            [
+                "71f56412e0a1bd0b"
+            ],
+            [
+                "30bcabc71382bd19"
+            ]
+        ]
+    },
+    {
+        "id": "30bcabc71382bd19",
+        "type": "debug",
+        "z": "4626f4eca8ae462b",
+        "g": "594314988bafe566",
+        "name": "Aedes Publish Events",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1080,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "3c5d1057143c730d",
+        "type": "comment",
+        "z": "4626f4eca8ae462b",
+        "g": "594314988bafe566",
+        "name": "AEDES MQTT broker",
+        "info": "Internal node-red server for MQTT communication.\nMosquitto not required",
+        "x": 860,
+        "y": 60,
+        "wires": []
     },
     {
         "id": "9fb18d31c60ab4b8",
